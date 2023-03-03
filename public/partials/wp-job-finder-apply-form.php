@@ -28,13 +28,12 @@
           <input type="tel" id="phone_no" name="phone_no" placeholder="012-345-6789" required>
         </div>
 
-        <div>
+        <!-- <div>
           <span class="details"><?php _e('Upload CV'); ?> </span>
-          <input ype="file" name="upload" id="upload" t/>
-
-         
-        </div>
+          <input ype="file" name="upload" id="upload" />
+        </div> -->
     </div>
+    <input type="hidden" value="<?php the_title();  ?>" name="applied_job_name" id="applied_job_name">
 
     <div class="gender__details">
         <input type="radio" name="gender" id="dot-1" value="male">
@@ -80,12 +79,13 @@
                   email    : jQuery("#email").val(),
                   message  : jQuery("#message").val(),
                   phone_no : jQuery("#phone_no").val(),
-                  upload_cv: jQuery("#upload_cv").val(),
-                  gender   : jQuery('input[name=gender]:checked').val()
+                  // upload_cv: jQuery("#upload_cv").val(),
+                  gender   : jQuery('input[name=gender]:checked').val(),
+                  job_name : jQuery("#applied_job_name").val(),
               };
           
-          console.log(formData);
-          return false;
+          // console.log(formData);
+          // return false;
           jQuery.ajax({
               type     : "POST",
               dataType : "json",

@@ -1,12 +1,14 @@
 <?php
+
 $post_id = get_the_ID();
 $data    = get_post_meta($post_id, 'job_finder_metabox_data', true );
-$company_name        = $data['company_name'];
-$company_description = $data['company_description'];
-$company_mail        = $data['company_mail'];
-$phone_no            = $data['phone_no'];
-$company_location    = $data['company_location']; 
-$job_expiry_date     = $data['job_expiry_date']
+
+$company_name        = ! (empty($data['company_name'])) ?  $data['company_name'] : '';
+$company_description = ! (empty($data['company_description'])) ? $data['company_description']: '';
+$company_mail        = ! (empty($data['company_mail'])) ?  $data['company_mail'] :'';
+$phone_no            = ! (empty($data['phone_no'])) ? $data['phone_no'] : '';
+$company_location    = ! (empty($data['company_location'])) ?  $data['company_location'] : ''; 
+$job_expiry_date     = ! (empty($data['job_expiry_date'])) ? $data['job_expiry_date'] : '';
 ?>
 <table id="job_metabox"  class="form-table">
     <tbody>
@@ -30,7 +32,7 @@ $job_expiry_date     = $data['job_expiry_date']
         <tr class="user-user-login-wrap">
             <td><b><label for="email"><?php _e('Company Phone Number'); ?></label></b> </td>
             <td>
-                <input type="text" class="regular-text" name="phone_no" id="phone_no" value="<?php echo (!empty($$phone_no)) ? $$phone_no : '';?>">
+                <input type="text" class="regular-text" name="phone_no" id="phone_no" value="<?php echo (!empty($phone_no)) ? $phone_no : '';?>">
             </td>
         <tr class="user-user-login-wrap">
             <td><b><label for="email"><?php _e('Company Location'); ?></label></b> </td>

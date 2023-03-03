@@ -276,18 +276,18 @@ class Wp_Job_Finder_Admin {
 			update_post_meta($post->ID, 'job_finder_metabox_data', $data);
 		}
 	}
-	function my_columns($columns) {
-		$columns['expiry_date'] = 'Expiry Date';
-		return $columns;
-	}
-	function my_show_columns($name) {
-		global $post;
-		switch ($name) {
-			case 'expiry_date':
-				$views = get_post_meta($post->ID, 'job_finder_metabox_data', true);
-				$date = (!empty($views['expiry_date'])) ? $views['expiry_date'] : '';
-		}
-	}	
+	// function my_columns($columns) {
+	// 	$columns['expiry_date'] = 'Expiry Date';
+	// 	return $columns;
+	// }
+	// function my_show_columns($name) {
+	// 	global $post;
+	// 	switch ($name) {
+	// 		case 'expiry_date':
+	// 			$views = get_post_meta($post->ID, 'job_finder_metabox_data', true);
+	// 			$date = (!empty($views['expiry_date'])) ? $views['expiry_date'] : '';
+	// 	}
+	// }	
 	public function register_job_finder_email_settings()
 	{
 		register_setting( 'job_finder_email_setting', 'job_finder_email_setting_data' );
@@ -383,7 +383,7 @@ class Job_Application_Wp_List_Table extends WP_List_Table  {
 				// 'id'  		  => 'ID',
 				'name'            => 'Name',
 				'email'           => 'Email',
-				// 'applied_for'  => 'Job applied for' ,
+				'applied_for'  => 'Job applied for' ,
 				'phone_no'        => 'Phone No',
 				'gender'          => 'Gender',
 			);
@@ -402,7 +402,7 @@ class Job_Application_Wp_List_Table extends WP_List_Table  {
             'post_title'    => [ 'post_title', true], 
             'email'         => [ 'email', true],
             'phone_no'      => [ 'phone_no', true],
-            //'applied_for' => [ 'applied_for', true],
+            'applied_for' => [ 'applied_for', true],
         );
         return $s_columns;
     }
@@ -428,15 +428,13 @@ class Job_Application_Wp_List_Table extends WP_List_Table  {
 						'email'      => $searchdata['email'],
 						'phone_no'   => $searchdata['phone_no'],
 						'gender'     => $searchdata['gender'],
+						'applied_for'=> $searchdata['job_name'],
 					); 
 				}
             }
         }else{
 			$query = "SELECT * FROM `wp_postmeta` WHERE `meta_key`= 'job_apply_user_data' ORDER BY `meta_id` DESC ";
 			$query_codes = $wpdb->get_results($query);
-			// echo "<pre>";
-			// print_r($query_codes);
-			// exit;
             foreach ($query_codes as $value) {
 				$userdata = unserialize($value->meta_value);
 				$data[] = array(
@@ -446,6 +444,7 @@ class Job_Application_Wp_List_Table extends WP_List_Table  {
 					'applied_for' => $userdata['username'],
 					'phone_no'    => $userdata['phone_no'],
 					'gender'      => $userdata['gender'],
+					'applied_for'=> $userdata['job_name'],
 				);
             }
         }        
@@ -460,6 +459,7 @@ class Job_Application_Wp_List_Table extends WP_List_Table  {
 			  case 'phone_no':
 			  case 'gender':
 			  case 'date':
+			  case 'applied_for':	
 				  return $item[ $column_name ];
 			  default:
 				 return $item[ $column_name ];

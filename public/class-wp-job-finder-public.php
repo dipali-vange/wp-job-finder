@@ -185,6 +185,7 @@ class Wp_Job_Finder_Public {
 	}
 	public function apply_job_user_data_function()
 	{
+		
 		if(!empty($_POST['formData']['username'])){
 			$id =  $_POST['formData']['id'];
 			$user_data = array(
@@ -192,8 +193,9 @@ class Wp_Job_Finder_Public {
 				'email'     => $_POST['formData']['email'],
 				'message'   => $_POST['formData']['message'],
 				'phone_no'  => $_POST['formData']['phone_no'],
-				'upload_cv' => $_POST['formData']['username'],
+				// 'upload_cv' => $_POST['formData']['username'],
 				'gender'    => $_POST['formData']['gender'],
+				'job_name'  => $_POST['formData']['job_name'],
 			);
 			add_post_meta($id,'job_apply_user_data',$user_data);
 			//SEND MAIL START

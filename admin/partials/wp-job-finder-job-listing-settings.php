@@ -3,9 +3,9 @@
         settings_fields( 'job_finder_list_setting' );
         do_settings_sections( 'job_finder_list_setting' ); 
         $settings              = get_option('job_finder_list_setting_data');
-        $pagination_type       = $settings['pagination_type'];
-        $multi_select_category = $settings['multi_select_category'];
-        $expiry_date           = $settings['expiry_date'];
+        // $pagination_type       = $settings['pagination_type'];
+        // $multi_select_category = $settings['multi_select_category'];
+        // $expiry_date           = $settings['expiry_date'];
     ?>
   <table class="form-table">  
     <tr>
@@ -15,7 +15,7 @@
         </td>
     </tr>
     
-    <tr>
+    <!-- <tr>
         <th scope="row"> <?php _e('Pagination Type');?> </th>
         <td> 
             <select name="job_finder_list_setting_data[pagination_type]" id="pagination_type">
@@ -24,9 +24,9 @@
                 <option value="pagination"  <?php echo isset( $pagination_type ) && $pagination_type === 'pagination' ? 'selected' : '' ; ?>>Pagination</option>
             </select>
         </td>
-    </tr>
+    </tr> -->
      
-    <tr>
+    <!-- <tr>
         <th scope="row"> <?php _e('Multi-select Categories');?> </th>
         <td>
             <select name="job_finder_list_setting_data[multi_select_category]" id="multi_select_category">
@@ -46,7 +46,7 @@
                 <option value="no"  <?php echo isset( $expiry_date ) && $expiry_date === 'no' ? 'selected' : '' ; ?>>No</option>
             </select>
         </td>
-    </tr>
+    </tr> -->
 
 </table>
 <?php submit_button(); ?>

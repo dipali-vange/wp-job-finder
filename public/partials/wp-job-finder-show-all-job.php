@@ -17,12 +17,12 @@
             <div class="career-search mb-60">
                 <form action="#" class="career-form mb-60" id="jobForm">
                 <div class="row">
-                    <div class="col-md-12 col-lg-3 my-3">
+                    <div class="col-md-12 col-lg-4 my-3">
                         <div class="input-group position-relative">
                         <input type="text" class="form-control" placeholder="Enter Your Keywords" id="keywords" name="keywords">
                     </div>
                 </div>
-                        <div class="col-md-12 col-lg-3 my-3">
+                        <div class="col-md-12 col-lg-4 my-3">
                             <div class="select-container">
                             <?php
                                 $args = array(
@@ -42,7 +42,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12 col-lg-3 my-3">
+                        <div class="col-md-12 col-lg-4 my-3">
                             <div class="select-container">
                                 <?php
                                 $args = array(
@@ -62,11 +62,11 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12 col-lg-3 my-3">
+                        <!-- <div class="col-md-12 col-lg-3 my-3">
                             <button type="button" class="btn btn-lg btn-block btn-light btn-reset" id="cstm-reset-btn">
                                 <?php _e('Reset'); ?>
                             </button>
-                        </div>
+                        </div> -->
 
                         <div class="col-md-12 col-lg-12 my-3">
                             <button type="button" class="btn btn-lg btn-block btn-light btn-custom" id="contact-submit">
@@ -152,10 +152,10 @@
                     </div>
                 </div>
                         <?php 
-                        $settings        = get_option('job_finder_list_setting_data');
-                        $pagination_type = $settings['pagination_type'];
+                        // $settings        = get_option('job_finder_list_setting_data');
+                        // $pagination_type = $settings['pagination_type'];
 
-                        if($pagination_type == 'load_more') { ?>
+                        // if($pagination_type == 'load_more') { ?>
                                 <div class="btn__wrapper load_more_class">
                                 <a id="load-more" style="text-decoration:none;">Load more</a>
                                 </div>
@@ -163,22 +163,23 @@
                                 <div class="btn__wrapper load_more_search_class" style="display:none;">
                                 <a id="load-more2" style="text-decoration:none;">Load more</a>
                                 </div>
-                        <?php } 
+                        <?php 
+                        // } 
 
-                        if($pagination_type == 'pagination') { 
-                            $total_pages = $posts->max_num_pages;
-                            if ($total_pages > 1){
-                                $current_page = max(1, get_query_var('paged'));
-                                echo paginate_links(array(
-                                    'base'          => get_pagenum_link(1) . '%_%',
-                                    'format'        => '/page/%#%',
-                                    'current'       => $current_page,
-                                    'total'         => $total_pages,
-                                    'prev_text'     => __('« prev'),
-                                    'next_text'     => __('next »'),
-                                ));
-                            }
-                        }
+                        // if($pagination_type == 'pagination') { 
+                        //     $total_pages = $posts->max_num_pages;
+                        //     if ($total_pages > 1){
+                        //         $current_page = max(1, get_query_var('paged'));
+                        //         echo paginate_links(array(
+                        //             'base'          => get_pagenum_link(1) . '%_%',
+                        //             'format'        => '/page/%#%',
+                        //             'current'       => $current_page,
+                        //             'total'         => $total_pages,
+                        //             'prev_text'     => __('« prev'),
+                        //             'next_text'     => __('next »'),
+                        //         ));
+                        //     }
+                        // }
                         ?>
                 </div>
             </div>

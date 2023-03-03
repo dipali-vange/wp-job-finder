@@ -171,8 +171,8 @@ class Wp_Job_Finder {
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_job_finder_page_settings' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_job_finder_list_settings' );
 		//DATA-TABLE LIST ADD EXTRA FIELD
-		$this->loader->add_filter('manage_edit-job-finder_columns', $plugin_admin, 'my_columns');
-		$this->loader->add_action('manage_posts_custom_column', $plugin_admin,  'my_show_columns');
+		// $this->loader->add_filter('manage_edit-job-finder_columns', $plugin_admin, 'my_columns');
+		// $this->loader->add_action('manage_posts_custom_column', $plugin_admin,  'my_show_columns');
 
 	}
 
